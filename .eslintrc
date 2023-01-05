@@ -1,0 +1,13 @@
+{
+  // "extends": ["next", "next/core-web-vitals"]
+  "extends": ["next"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/display-name": "off",
+    "@next/next/no-document-import-in-page": "off",
+    "react/no-unescaped-entities": 0,
+    "jsx-a11y/alt-text": [0],
+    "@next/next/no-img-element": "off"
+  }
+}

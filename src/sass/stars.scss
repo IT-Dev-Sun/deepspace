@@ -1,0 +1,103 @@
+@import 'compass';
+
+
+// n is number of stars required
+@function multiple-box-shadow ($n) {
+  $value: '#{random(3000)}px #{random(2000)}px #acacac';
+  $o: $n/2;
+  @for $i from 2 through $o {
+    $value: '#{$value} , #{random(3000)}px #{random(2000)}px #515151';
+  }
+  @for $i from $o+1 through $n {
+    $value: '#{$value} , #{random(3000)}px #{random(2000)}px #858585';
+  }
+
+  @return unquote($value);
+}
+  
+
+$shadows-small:  multiple-box-shadow(1000);
+$shadows-medium: multiple-box-shadow(300);
+$shadows-big:    multiple-box-shadow(120);
+
+html {
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  overflow: hidden;
+}
+    
+#stars {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $shadows-small;
+  animation			: animStar 75s linear infinite;
+  -webkit-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+    
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $shadows-small;
+  }
+}
+    
+#stars2 {
+  width: 2px;
+  height: 2px;
+  border-radius: 1px;
+  background: transparent;
+  box-shadow: $shadows-medium;
+  animation			: animStar 150s linear infinite;
+  -webkit-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+    
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: $shadows-medium;
+  } 
+}
+
+#stars3 {
+  width: 3px;
+  height: 3px;
+  border-radius: 2px;
+  background: transparent;
+  box-shadow: $shadows-big;
+  animation			: animStar 300s linear infinite;
+  -webkit-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+    
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: $shadows-big;
+  }
+}
+
+#stars, #stars2, #stars3 {
+  overflow: hidden;
+  position: absolute;
+}
+    
+@keyframes animStar {
+  from {
+    transform: translateY(0px)
+  }
+  to {
+    transform: translateY(-2000px)
+  }
+}
